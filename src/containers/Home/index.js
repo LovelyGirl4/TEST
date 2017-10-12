@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Comment} from '../../components'
+// import {Comment} from '../../components'
 import img from '../../assets/span.jpg'
 
 class Home extends Component {
@@ -9,7 +9,8 @@ class Home extends Component {
     }
     render() {
         return <div>
-            <Comment img={img}/>
+            <h2>Home</h2>
+            {/* <Comment img={img}/> */}
         </div>
     }
 }

@@ -63,10 +63,6 @@ module.exports = {
                     loader: 'style-loader'
                 }, {
                     loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        localIdentName: '[name]_[local]_[hash:base64:5]'
-                    }
                 }]
             }
         ],

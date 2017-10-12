@@ -5,6 +5,7 @@ import { ConnectedRouter as Router, push } from 'react-router-redux'
 import { history } from '../configureStore'
 import {testAction} from '../actions'
 import Home from './Home'
+import Login from './Login'
 
 const About = () => (
     <div>
@@ -23,13 +24,13 @@ class App extends Component {
         return (
             <Router history={history}>
                 <div>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
+                    {/* <ul>
+                        <li><Link to="/home">Home</Link></li>
                         <li><Link to="/about">About</Link></li>
-                    </ul>
+                    </ul> */}
                     <hr/>
                     <Switch>
-                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/" component={Login}/>
                         <Route path="/about" component={About}/>
                     </Switch>
                 </div>

@@ -4,5 +4,22 @@
         "stage-0",
         "react",
     ],
-    "plugins": ["transform-runtime", ["import", {"style": "css", "libraryName": "antd"}]]
+    "plugins": [
+        [
+            "transform-runtime",
+            {
+                "helpers": false,
+                "polyfill": false,
+                "regenerator": true,
+                "moduleName": "babel-runtime"
+            }
+        ],
+        [
+            "import",
+            {
+                "style": "css",
+                "libraryName": "antd"
+            }
+        ]
+    ]
 }

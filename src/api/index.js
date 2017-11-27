@@ -17,7 +17,7 @@ if (process.argv.NODE_ENV === 'development') {
     AUTHED_API = 'http://api.autopartshub.com'
 }
 // encodeURIComponent()函数作用：可把字符串作为URI 组件进行编码。其返回值URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。
-const serialize = obj => Object.keys(obj).map(key => key + '=' + encodeURIComponent(obj[key])).join('&');
+const serialize = obj => Object.keys(obj).map(key => key + '=' + encodeURIComponent(obj[key])).join('&')
 const _fetch = (url, option) => {
     return fetch(API + url, option).then(res => {
         if (res.status > 199 && res.status < 300) {

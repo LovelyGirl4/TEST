@@ -1,7 +1,7 @@
 import {FETCH_LOGIN} from '../constants/ActionTypes'
 
-export fetchLogin = (username, password) => {
+export const fetchLogin = (username, password) => ({
     type: FETCH_LOGIN,
     username,
     password,
-}
+})

@@ -1,28 +1,28 @@
 import React, {Component} from 'react'
-import {Form, Icon, Input, Button, Checkbox} from 'antd';
-import './index.css';
-const FormItem = Form.Item;
+import {Form, Icon, Input, Button, Checkbox} from 'antd'
+import './index.css'
+const FormItem = Form.Item
 
 class NormalLoginForm extends Component {
     handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                console.log('Received values of form: ', values)
             }
-        });
+        })
     }
     render() {
-        const {getFieldDecorator} = this.props.form;
+        const {getFieldDecorator} = this.props.form
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
                     {getFieldDecorator('userName', {
                         rules: [
-                        {
+                            {
                                 required: true,
                                 message: 'Please input your username!'
-                        }
+                            }
                         ]
                     })(
                         <Input prefix={< Icon type = "user" style = {{ fontSize: 13 }}/>} placeholder="Username"/>
@@ -31,10 +31,10 @@ class NormalLoginForm extends Component {
                 <FormItem>
                     {getFieldDecorator('password', {
                         rules: [
-                        {
+                            {
                                 required: true,
                                 message: 'Please input your Password!'
-                        }
+                            }
                         ]
                     })(
                         <Input prefix={< Icon type = "lock" style = {{ fontSize: 13 }}/>} type="password" placeholder="Password"/>
@@ -55,9 +55,9 @@ class NormalLoginForm extends Component {
                     <a href="">register now!</a>
                 </FormItem>
             </Form>
-        );
+        )
     }
 }
 
-const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
-export default WrappedNormalLoginForm;
+const WrappedNormalLoginForm = Form.create()(NormalLoginForm)
+export default WrappedNormalLoginForm

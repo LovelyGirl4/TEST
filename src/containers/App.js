@@ -24,13 +24,15 @@ class App extends Component {
         return (
             <Router history={history}>
                 <div>
-                    {/* <ul>
-                        <li><Link to="/home">Home</Link></li>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                         <li><Link to="/about">About</Link></li>
-                    </ul> */}
+                    </ul>
                     <hr/>
                     <Switch>
-                        <Route exact path="/" component={Login}/>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/Login" component={Login}/>
                         <Route path="/about" component={About}/>
                     </Switch>
                 </div>

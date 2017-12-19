@@ -5,16 +5,19 @@ es6promise.polyfill()
 import fetch from 'isomorphic-fetch'
 import store from '../configureStore'
 
-let API, AUTHED_API
+let API, API_CLIENT_ID, AUTHED_API
 if (process.argv.NODE_ENV === 'development') {
-    API = 'http://api.autopartshub.com'
-    AUTHED_API = 'http://api.autopartshub.com'
+    API = 'http://api.test.autopartshub.com'
+    AUTHED_API = 'http://api.test.autopartshub.com'
+    API_CLIENT_ID = 'd2ViOnNlY3JldA=='
 } else if (process.argv.NODE_ENV === 'production') {
-    API = 'http://api.autopartshub.com'
-    AUTHED_API = 'http://api.autopartshub.com'
+    API = 'http://api.test.autopartshub.com'
+    AUTHED_API = 'http://api.test.autopartshub.com'
+    API_CLIENT_ID = 'd2ViOnNlY3JldA=='
 } else {
-    API = 'http://api.autopartshub.com'
-    AUTHED_API = 'http://api.autopartshub.com'
+    API = 'http://api.test.autopartshub.com'
+    AUTHED_API = 'http://api.test.autopartshub.com'
+    API_CLIENT_ID = 'd2ViOnNlY3JldA=='
 }
 // encodeURIComponent()函数作用：可把字符串作为URI 组件进行编码。其返回值URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。
 const serialize = obj => Object.keys(obj).map(key => key + '=' + encodeURIComponent(obj[key])).join('&')
@@ -58,7 +61,8 @@ export const fetchLogin = (username, password) => {
             username,
             password,
             grant_type: 'password',
-            client_id: 'admin',
+            client_id: 'app',
+            client_secret: '',
             scope: ''
         })
     })

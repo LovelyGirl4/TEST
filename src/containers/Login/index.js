@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Login from '../../components/Login/Login'
 import img from '../../assets/span.jpg'
+import {fetchLogin} from '../../actions/loginAction'
 
 class Home extends Component {
     constructor(props) {
@@ -9,9 +10,12 @@ class Home extends Component {
     }
     render() {
         return <div style={{margin: '200px 500px'}}>
-            <Login />
+            <Login fetchLogin={this.props.fetchLogin}/>
         </div>
     }
 }
 
-export default connect()(Home)
+export default connect(
+    () => ({}),
+    {fetchLogin}
+)(Home)

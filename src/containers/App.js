@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {Route, Link, Switch} from 'react-router-dom'
+import {Route, Link, Switch, Redirect} from 'react-router-dom'
 import { ConnectedRouter as Router, push } from 'react-router-redux'
 import { history } from '../configureStore'
 import {testAction} from '../actions'
@@ -13,6 +13,19 @@ const About = () => (
     </div>
 )
 
+const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+    <Route {...rest} render={props => (
+        isAuthenticated ? (
+            <Component {...props} {...rest}/>
+        ) : (
+            <Redirect to={{
+                pathname: '/login',
+                state: { from: props.location }
+            }}/>
+        )
+    )}/>
+)
+
 class App extends Component {
     constructor(props) {
         super(props)
@@ -21,6 +34,7 @@ class App extends Component {
         this.props.testAction()
     }
     render() {
+        const {token} = this.props
         return (
             <Router history={history}>
                 <div>
@@ -32,6 +46,7 @@ class App extends Component {
                     <hr/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <PrivateRoute path="/home" component={Home} isAuthenticated={token}/>
                         <Route exact path="/Login" component={Login}/>
                         <Route path="/about" component={About}/>
                     </Switch>
@@ -42,7 +57,7 @@ class App extends Component {
 }
 
 export default connect(state => ({
-
+    token: state.app.token
 }), {
     testAction
 })(App)

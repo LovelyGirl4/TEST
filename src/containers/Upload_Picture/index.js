@@ -1,13 +1,13 @@
 /*
-*登录页面：输入账号、密码，点击确认按钮调接口获取token存入store，然后跳转到首页
-*username: Test@qq.com pwd: 123123
+*将本地图片上传到服务器，获得图片url
+*上传时对图片进行压缩
+*上传时对图片进行裁剪
 */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Login from '../../components/Login/Login'
-import {fetchLogin} from '../../actions/loginAction'
 
-class Home extends Component {
+class UploadPicture extends Component {
     constructor(props) {
         super(props)
     }
@@ -20,5 +20,5 @@ class Home extends Component {
 
 export default connect(
     () => ({}),
-    {fetchLogin}
-)(Home)
+    {}
+)(UploadPicture)

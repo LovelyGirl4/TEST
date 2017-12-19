@@ -7,12 +7,6 @@ import {testAction} from '../actions'
 import Home from './Home'
 import Login from './Login'
 
-const About = () => (
-    <div>
-        <h2>About</h2>
-    </div>
-)
-
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
     <Route {...rest} render={props => (
         isAuthenticated ? (
@@ -38,17 +32,10 @@ class App extends Component {
         return (
             <Router history={history}>
                 <div>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                    </ul>
-                    <hr/>
                     <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <PrivateRoute path="/home" component={Home} isAuthenticated={token}/>
                         <Route exact path="/Login" component={Login}/>
-                        <Route path="/about" component={About}/>
+                        <PrivateRoute exact path="/" component={Home}/>
+                        <PrivateRoute path="/home" component={Home} isAuthenticated={token}/>
                     </Switch>
                 </div>
             </Router>

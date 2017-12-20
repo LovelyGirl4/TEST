@@ -3,9 +3,11 @@ import {connect} from 'react-redux'
 import {Route, Link, Switch, Redirect} from 'react-router-dom'
 import { ConnectedRouter as Router, push } from 'react-router-redux'
 import { history } from '../configureStore'
-import {testAction} from '../actions'
+import { testAction } from '../actions'
+import { fetchTokenLogin } from '../actions/loginAction'
 import Home from './Home'
 import Login from './Login'
+import Upload from './Upload'
 
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
     <Route {...rest} render={props => (
@@ -26,9 +28,11 @@ class App extends Component {
     }
     componentDidMount() {
         this.props.testAction()
+        this.props.fetchTokenLogin(this.props.token)
     }
     render() {
         const {token} = this.props
+        console.log('token:', token)
         return (
             <Router history={history}>
                 <div>
@@ -36,6 +40,7 @@ class App extends Component {
                         <Route exact path="/Login" component={Login}/>
                         <PrivateRoute exact path="/" component={Home}/>
                         <PrivateRoute path="/home" component={Home} isAuthenticated={token}/>
+                        <PrivateRoute path="/upload-picture" component={Upload} isAuthenticated={token}/>
                     </Switch>
                 </div>
             </Router>
@@ -46,5 +51,6 @@ class App extends Component {
 export default connect(state => ({
     token: state.app.token
 }), {
-    testAction
+    testAction,
+    fetchTokenLogin
 })(App)

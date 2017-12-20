@@ -11,7 +11,7 @@ class Home extends Component {
     render() {
         return <div>
             <h2>Home</h2>
-            <li><Link to="/uploadPic">上传图片</Link></li>
+            <li><Link to="/upload-picture">上传图片</Link></li>
             {/* <Comment img={img}/> */}
         </div>
     }

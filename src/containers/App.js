@@ -28,7 +28,7 @@ class App extends Component {
     }
     componentDidMount() {
         this.props.testAction()
-        this.props.fetchTokenLogin(this.props.token)
+        this.props.fetchTokenLogin()
     }
     render() {
         const {token} = this.props

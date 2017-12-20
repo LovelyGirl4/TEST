@@ -94,3 +94,18 @@ export const guid = () => {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
 }
+
+// 从缓存中取到token，login时已经将token存到缓存
+export const getToken = () => {
+    let token = window.localStorage.getItem('token')
+    if (token) {
+        const { exp } = JSON.parse(atob(token.split('.')[1]))
+        // +new Date():将当前时间换成毫秒，exp*1000: token失效时间戳
+        if (+new Date() > exp * 1000) {
+            window.localStorage.removeItem('stoken')
+            return null
+        }
+        return token
+    }
+    return null
+}

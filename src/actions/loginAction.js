@@ -6,7 +6,6 @@ export const fetchLogin = (username, password) => ({
     password,
 })
 
-export const fetchTokenLogin = (token) => ({
-    type: TOKEN_LOGIN,
-    token
+export const fetchTokenLogin = () => ({
+    type: TOKEN_LOGIN
 })

@@ -36,10 +36,9 @@ const _fetchJson = (url, option = {}) => {
     })
 }
 const _authedFetch = (url, option = {}) => {
-    // const access_token = store().getState().app.token
-    // console.log('access_token:', store().getState().app)
-    // console.log('access_token2:', window.localStorage.getItem('token'))
-    const access_token = window.localStorage.getItem('token')
+    // token: 1.从store里取 2.从缓存里取
+    const access_token = store().getState().app.token
+    // const access_token = window.localStorage.getItem('token')
     return _fetch(url, {
         ...option,
         headers: {

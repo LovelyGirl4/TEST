@@ -19,7 +19,7 @@ function * uploadPicture (picture) {
 }
 
 export default {
-    watchUploadPicture: function * (store) {
+    watchUploadPicture: function * () {
         while(true) {
             const {picture} = yield take(UPLOAD_PICTURE)
             const token = yield call(uploadPicture, picture)

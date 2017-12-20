@@ -17,28 +17,25 @@ function * fetchLoginFunc (username, password) {
     }
 }
 
-function * tokenLoginFunc (token) {
+function * tokenLoginFunc () {
     try {
-        // const access_token = yield select(state => state.app.token)
-        const access_token = window.localStorage.getItem('token')
-        console.log('access_token:', access_token)
-        yield put({ type: TOKEN_LOGIN_SUCCESS, token: access_token })
+        yield put({ type: TOKEN_LOGIN_SUCCESS })
     } catch(e) {
         console.log(e)
     }
 }
 
 export default {
-    watchLogin: function * (store) {
+    watchLogin: function * () {
         while(true) {
             const {username, password} = yield take(FETCH_LOGIN)
-            const token = yield call(fetchLoginFunc, username, password, store)
+            const token = yield call(fetchLoginFunc, username, password)
         }
     },
-    watchTokenLogin: function * (store) {
+    watchTokenLogin: function * () {
         while(true) {
-            const {token} = yield take(TOKEN_LOGIN)
-            yield call(tokenLoginFunc, token, store)
+            yield take(TOKEN_LOGIN)
+            yield call(tokenLoginFunc)
         }
     }
 }

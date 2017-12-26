@@ -69,3 +69,14 @@ export const fetchLogin = (username, password) => {
 export const getUploadConfig = (resource, id, type) => {
     return _authedFetch(`/api/s3-upload/config?resource=${resource}&id=${id}&type=${type}`, {method: 'GET'})
 }
+// S3，上传文件
+export const uploadFiles = (data) => fetch('http://gw-s3-dev.s3.amazonaws.com/', {
+    method: 'POST',
+    mode: 'cors',
+    body: data,
+}).then(res => {
+    if (res.status >= 400 && res.status !== 422) {
+        throw new Error('Bad response from server')
+    }
+    return res.url
+})

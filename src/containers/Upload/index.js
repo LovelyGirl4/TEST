@@ -14,8 +14,8 @@ class UploadContainer extends Component {
     }
     // customRequest覆盖upload默认的上传行为，自定义自己的上传实现
     customRequest = (file) => {
-        console.log('file:', file)
-        this.props.uploadPicture(file)
+        // 调接口上传图片
+        this.props.uploadPicture(file.file)
     }
     render() {
         return <div style={{margin: '200px 500px'}}>

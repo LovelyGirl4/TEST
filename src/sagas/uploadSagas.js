@@ -16,7 +16,9 @@ function * uploadPicture (picture) {
             filename: picture.name,
             url: s3_URL + `${uploadConfig.dir}/${GUID}${picture.name}`
         }
-        yield put({ type: UPLOAD_PICTURE_SUCCESS, picture: fileInfo })
+        const pictures = yield select(state => state.upload.picture)
+        pictures.push(fileInfo)
+        yield put({ type: UPLOAD_PICTURE_SUCCESS, picture: pictures })
     } catch(e) {
         yield put({ type: UPLOAD_PICTURE_ERROR })
         console.log(e)

@@ -17,9 +17,15 @@ class UploadContainer extends Component {
         // 调接口上传图片
         this.props.uploadPicture(file.file)
     }
+    componentWillReceiveProps(nextProps) {
+        const {fileList} = nextProps
+        console.log('fileList222:', fileList)
+    }
     render() {
+        const {fileList} = this.props
+        console.log('fileList:', fileList)
         return <div style={{margin: '200px 500px'}}>
-            <Upload listType='picture' customRequest={this.customRequest}>
+            <Upload listType='picture' customRequest={this.customRequest} fileList={fileList}>
                 <Button>
                     <Icon type="upload" /> Click to Upload
                 </Button>
@@ -29,6 +35,8 @@ class UploadContainer extends Component {
 }
 
 export default connect(
-    () => ({}),
+    ({upload}) => ({
+        fileList: upload.picture
+    }),
     {uploadPicture}
 )(UploadContainer)

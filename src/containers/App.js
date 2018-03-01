@@ -8,6 +8,8 @@ import { fetchTokenLogin } from '../actions/loginAction'
 import Home from './Home'
 import Login from './Login'
 import Upload from './Upload'
+import Exercise from './Exercise'
+import Excel from './Excel'
 
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
     <Route {...rest} render={props => (
@@ -41,6 +43,8 @@ class App extends Component {
                         <PrivateRoute exact path="/" component={Home}/>
                         <PrivateRoute path="/home" component={Home} isAuthenticated={token}/>
                         <PrivateRoute path="/upload-picture" component={Upload} isAuthenticated={token}/>
+                        <PrivateRoute exact path="/exercise" component={Exercise} isAuthenticated={token}/>
+                        <PrivateRoute exact path="/excel" component={Excel} isAuthenticated={token} />
                     </Switch>
                 </div>
             </Router>

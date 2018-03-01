@@ -1,0 +1,20 @@
+.box {
+    height: 200px;
+    width: 200px;
+    margin-left: 20%;
+    margin-top: 50px;
+    border: 1px solid green;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.con {
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

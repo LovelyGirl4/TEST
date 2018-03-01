@@ -12,6 +12,8 @@ class Home extends Component {
         return <div>
             <h2>Home</h2>
             <li><Link to="/upload-picture">上传图片</Link></li>
+            <li><Link to="/exercise">just for test</Link></li>
+            <li><Link to="/excel">EXCEL</Link></li>
             {/* <Comment img={img}/> */}
         </div>
     }
